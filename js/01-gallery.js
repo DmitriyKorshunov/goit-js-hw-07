@@ -3,38 +3,28 @@ import { galleryItems } from "./gallery-items.js";
 
 console.log(galleryItems);
 
+//ссылки на злементы
+const linkGallery = document.querySelector(".gallery");
+console.log(linkGallery);
+const galleryMarkup = makeGalleryMarkup(galleryItems);
+console.log(galleryMarkup);
+linkGallery.insertAdjacentHTML("beforeend", galleryMarkup);
+
 // сщздать функцию для добавления разметки
-{
-  /* <div class="gallery__item">
-  <a class="gallery__link" href="large-image.jpg">
-    <img
-      class="gallery__image"
-      src="small-image.jpg"
-      data-source="large-image.jpg"
-      alt="Image description"
-    />
-  </a>
-</div>; */
-}
 
 function makeGalleryMarkup() {
   return galleryItems
-    .map((param) => {
+    .map(({ preview, description }) => {
       return `<div class="gallery__item">
               <a class="gallery__link" href="large-image.jpg">
                 <img
                   class="gallery__image"
-                  src="small-image.jpg"
+                  src="${preview}"
                   data-source="large-image.jpg"
-                  alt="Image description"
+                  alt="${description}"
                 />
              </a>
            </div>`;
     })
     .join("");
 }
-console.log(makeGalleryMarkup(galleryItems));
-
-//const linkMakeImgGalleryRows = images.map(makeImgGalleryMarkup).join(" ");
-
-//gallerysEL.insertAdjacentHTML("beforeend", linkMakeImgGalleryRows);
