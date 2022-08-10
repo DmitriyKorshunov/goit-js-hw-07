@@ -9,7 +9,10 @@ console.log(linkGallery);
 const galleryMarkup = makeGalleryMarkup(galleryItems);
 console.log(galleryMarkup);
 linkGallery.insertAdjacentHTML("beforeend", galleryMarkup);
-
+linkGallery.addEventListener("click", onLinkgalleryActiv);
+function onLinkgalleryActiv(evt) {
+  console.log(evt);
+}
 // сщздать функцию для добавления разметки
 
 function makeGalleryMarkup() {
