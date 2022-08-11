@@ -10,33 +10,32 @@ const galleryMarkup = makeGalleryMarkup(galleryItems);
 //console.log(galleryMarkup);
 
 linkGallery.insertAdjacentHTML("beforeend", galleryMarkup);
-linkGallery.addEventListener("click", (galleryItems) => {
+linkGallery.addEventListener("click", onClickHandler);
+
+function onClickHandler(galleryItems) {
   galleryItems.preventDefault();
+  //const imgOriginal = galleryItems.target => .dataset.source;
+  //document.querySelector('img[data-source="${original}"]');
+  //console.log(imgOriginal);
+  //imgOriginal.src = imgOriginal.dataset.source;
+  const instance = basicLightbox.create(`
+      <img src="${galleryItems.target.dataset.source}" width="800" height="600">
+  `);
 
-  const oneGalleryItem = galleryItems.target;
-  console.log(oneGalleryItem);
-
-  console.log(oneGalleryItem.src);
-  console.log(galleryItems.original);
-  //oneGalleryItem.src = `${galleryItems.src.original}`;
-  //   const instance = basicLightbox.create(`
-  //     <img src="${original}" width="800" height="600">
-  // `);
-
-  //   instance.show();
-});
+  instance.show();
+}
 
 // сщздать функцию для добавления разметки
 
 function makeGalleryMarkup() {
   return galleryItems
-    .map(({ preview, description }) => {
+    .map(({ preview, original, description }) => {
       return `<div class="gallery__item">
               <a class="gallery__link" href="large-image.jpg">
                 <img
                   class="gallery__image"
                   src="${preview}"
-                  data-source="large-image.jpg"
+                  data-source="${original}"
                   alt="${description}"
                 />
              </a>
