@@ -19,13 +19,11 @@ function makeGalleryMarkup() {
     .join("");
 }
 
-let gallery = new SimpleLightbox(".gallery a");
-console.log(gallery);
-//gallery.on("show.simplelightbox", makeClickImg);
-
 function makeClickImg(galleryItems) {
   galleryItems.preventDefault();
   if (galleryItems.target.nodeName !== "IMG") {
     return;
   }
 }
+
+let gallery = new SimpleLightbox(".gallery a");
