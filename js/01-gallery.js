@@ -14,10 +14,9 @@ linkGallery.addEventListener("click", onClickHandler);
 
 function onClickHandler(galleryItems) {
   galleryItems.preventDefault();
-  //const imgOriginal = galleryItems.target => .dataset.source;
-  //document.querySelector('img[data-source="${original}"]');
-  //console.log(imgOriginal);
-  //imgOriginal.src = imgOriginal.dataset.source;
+  if (galleryItems.target.nodeName !== "IMG") {
+    return;
+  }
   const instance = basicLightbox.create(`
       <img src="${galleryItems.target.dataset.source}" width="800" height="600">
   `);
