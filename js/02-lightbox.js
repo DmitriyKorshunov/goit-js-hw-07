@@ -7,7 +7,7 @@ console.log(linkGallery);
 const galleryMarkup = makeGalleryMarkup(galleryItems);
 
 linkGallery.insertAdjacentHTML("beforeend", galleryMarkup);
-//linkGallery.addEventListener("click", makeClickImg);
+linkGallery.addEventListener("click", makeClickImg);
 
 function makeGalleryMarkup() {
   return galleryItems
@@ -19,14 +19,13 @@ function makeGalleryMarkup() {
     .join("");
 }
 
-// function makeClickImg(galleryItems) {
-//   galleryItems.preventDefault();
-//   if (galleryItems.target.nodeName !== "IMG") {
-//     return;
-//   }
-//   const instance = basicLightbox.create(`
-//       <img src="${galleryItems.target.dataset.source}" width="800" height="600">
-//   `);
+let gallery = new SimpleLightbox(".gallery a");
+console.log(gallery);
+//gallery.on("show.simplelightbox", makeClickImg);
 
-//   instance.show();
-// }
+function makeClickImg(galleryItems) {
+  galleryItems.preventDefault();
+  if (galleryItems.target.nodeName !== "IMG") {
+    return;
+  }
+}
