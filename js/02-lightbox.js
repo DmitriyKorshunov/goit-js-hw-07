@@ -12,9 +12,9 @@ linkGallery.addEventListener("click", makeClickImg);
 function makeGalleryMarkup() {
   return galleryItems
     .map(({ preview, original, description }) => {
-      return `<a class="gallery__item" href="large-image.jpg">
-               <img class="gallery__image" src="${preview}" alt="${description}" />
-               </a>`;
+      return `<li><a class="gallery__item" href="${original}">
+               <img class="gallery__image" src="${preview}" alt="${description}" title="${description}"/>
+               </a></li>`;
     })
     .join("");
 }
