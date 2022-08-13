@@ -24,6 +24,9 @@ function makeClickImg(galleryItems) {
   if (galleryItems.target.nodeName !== "IMG") {
     return;
   }
+  let gallery = new SimpleLightbox(".gallery a");
+  gallery.on("show.simplelightbox", function () {
+    gallery.defaultOptions.captionDelay = 250;
+    console.log(gallery.defaultOptions.captionDelay);
+  });
 }
-
-let gallery = new SimpleLightbox(".gallery a");
