@@ -9,6 +9,7 @@ const galleryMarkup = makeGalleryMarkup(galleryItems);
 linkGallery.insertAdjacentHTML("beforeend", galleryMarkup);
 linkGallery.addEventListener("click", makeClickImg);
 
+//разметка галереи
 function makeGalleryMarkup() {
   return galleryItems
     .map(({ preview, original, description }) => {
@@ -26,6 +27,7 @@ function makeGalleryMarkup() {
     .join("");
 }
 
+// открытие модального окна и показ большого изображения
 function makeClickImg(galleryItems) {
   galleryItems.preventDefault();
   if (galleryItems.target.nodeName !== "IMG") {
@@ -37,3 +39,16 @@ function makeClickImg(galleryItems) {
 
   instance.show();
 }
+
+// закрытие модального окна кнопкой escape
+document.addEventListener("keydown", (evt) => {
+  const pushEscape = evt.code === "Escape";
+
+  const onModalWindow = document.querySelector(".basicLightbox");
+  if (!onModalWindow) {
+    return;
+  }
+  if (pushEscape) {
+    onModalWindow.remove();
+  }
+});
